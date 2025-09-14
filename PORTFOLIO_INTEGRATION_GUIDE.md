@@ -2,7 +2,17 @@
 
 ## 📋 Overview
 
-Your RAG PDF Chat application is now ready for portfolio integration! This guide provides multiple approaches to embed your application into `www.sameetsonawane.com`.
+Your modern, portfolio-style RAG PDF Chat application is now ready for seamless integration! This comprehensive guide provides multiple approaches to embed your stunning application into `www.sameetsonawane.com` with professional styling and smooth user experience.
+
+## 🎨 **New Portfolio-Style Features**
+
+Your application now includes:
+- **Glass Morphism Design**: Translucent cards with backdrop blur effects
+- **Gradient Headers**: Eye-catching purple-blue gradient themes
+- **Professional Typography**: Clean Inter font throughout
+- **Responsive Layout**: Works perfectly on all devices
+- **Interactive Animations**: Smooth hover effects and transitions
+- **Portfolio Branding**: Integrated with your personal portfolio
 
 ## 🚀 Quick Start Options
 
@@ -28,32 +38,39 @@ Your RAG PDF Chat application is now ready for portfolio integration! This guide
 
 ## 🌐 Portfolio Integration Methods
 
-### Method 1: Standalone Page
-**Best for**: Dedicated AI tools section
+### Method 1: Standalone Portfolio Page
+**Best for**: Dedicated AI tools section with modern styling
 
 **Files to use**:
-- `portfolio-integration.html` - Complete standalone page
-- `portfolio-integration.css` - Styling
-- `portfolio-integration.js` - Interactive features
+- `portfolio-integration.html` - Complete standalone page with portfolio styling
+- `portfolio-integration.css` - Modern glass morphism and gradient styling
+- `portfolio-integration.js` - Interactive features with portfolio theme
 
 **Implementation**:
 1. Upload files to your web server
 2. Create route: `www.sameetsonawane.com/ai-tools/rag-pdf-chat`
-3. Link from your main portfolio
+3. Link from your main portfolio with matching design elements
+4. Customize colors and branding to match your portfolio
 
-### Method 2: Embedded Widget
-**Best for**: Integrated portfolio section
+### Method 2: Embedded Portfolio Widget
+**Best for**: Seamless integration with existing portfolio design
 
-**HTML Integration**:
+**HTML Integration with Portfolio Styling**:
 ```html
-<!-- Add to your existing portfolio page -->
-<div id="rag-container"></div>
+<!-- Include modern portfolio styling -->
+<link rel="stylesheet" href="portfolio-integration.css">
 
+<!-- Add to your existing portfolio page with portfolio theme -->
+<div id="rag-container" class="rag-pdf-chat-section"></div>
+
+<script src="portfolio-integration.js"></script>
 <script>
+// Initialize with portfolio theme and styling
 const ragChat = new RAGPDFChat('rag-container', {
     apiUrl: 'https://rag.sameetsonawane.com',
     height: '600px',
-    width: '100%'
+    width: '100%',
+    theme: 'portfolio'  // Enables portfolio-specific styling
 });
 </script>
 ```

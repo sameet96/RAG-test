@@ -1,6 +1,15 @@
 # 🚀 RAG PDF Chat - Deployment Guide
 
-This guide will help you deploy your RAG PDF Chat application using Docker and integrate it into your portfolio website.
+This comprehensive guide will help you deploy your modern, portfolio-style RAG PDF Chat application using Docker and integrate it seamlessly into your portfolio website.
+
+## 🎨 **What You're Deploying**
+
+Your RAG PDF Chat application features:
+- **Modern Portfolio UI**: Glass morphism design with gradient themes
+- **Professional Styling**: Clean Inter font and responsive layout
+- **Interactive Elements**: Smooth animations and hover effects
+- **Portfolio Integration**: Seamless embedding in your website
+- **Production Ready**: Docker containerization with nginx reverse proxy
 
 ## 📋 Prerequisites
 
@@ -52,39 +61,44 @@ docker-compose down
 
 ## 🌐 Portfolio Integration
 
-### Option 1: Standalone HTML Page
+### **Modern Integration Options**
 
-Use the provided `portfolio-integration.html` as a complete standalone page:
+Your application comes with multiple integration methods designed to match your portfolio's aesthetic:
+
+### **Option 1: Standalone Portfolio Page**
+Perfect for a dedicated AI tools section:
 
 ```html
-<!-- Include in your portfolio -->
-<iframe src="http://your-domain.com" 
+<!-- Use portfolio-integration.html as a complete page -->
+<!-- Route: www.sameetsonawane.com/ai-tools/rag-pdf-chat -->
+<iframe src="https://rag.sameetsonawane.com" 
         width="100%" 
         height="800px" 
-        frameborder="0">
+        frameborder="0"
+        style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
 </iframe>
 ```
 
-### Option 2: JavaScript Integration
-
-Add to your existing portfolio:
+### **Option 2: Embedded Widget**
+Seamlessly integrate with your existing portfolio:
 
 ```html
-<!-- Include CSS -->
+<!-- Include modern styling -->
 <link rel="stylesheet" href="portfolio-integration.css">
 
-<!-- Include JavaScript -->
+<!-- Include interactive JavaScript -->
 <script src="portfolio-integration.js"></script>
 
-<!-- Add container -->
-<div id="rag-container"></div>
+<!-- Add container with portfolio styling -->
+<div id="rag-container" class="rag-pdf-chat-section"></div>
 
 <script>
-// Initialize the RAG chat widget
+// Initialize with portfolio theme
 const ragChat = new RAGPDFChat('rag-container', {
-    apiUrl: 'http://your-domain.com',
+    apiUrl: 'https://rag.sameetsonawane.com',
     height: '600px',
-    width: '100%'
+    width: '100%',
+    theme: 'portfolio'  // Matches your portfolio design
 });
 </script>
 ```
