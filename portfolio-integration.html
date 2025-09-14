@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PDF Chat - Sameet Sonawane</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .demo-section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .demo-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .demo-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .tech-stack {
+            background: #f8f9fa;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .tech-stack h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .iframe-container {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI PDF Chat</h1>
+            <p>Intelligent Document Analysis & Q&A System</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">📄</span>
+                <h3>Smart PDF Processing</h3>
+                <p>Extract text, images, and tables from PDF documents with advanced OCR capabilities and intelligent content parsing.</p>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">🧠</span>
+                <h3>RAG Technology</h3>
+                <p>Retrieval-Augmented Generation system that understands document context and provides accurate, relevant answers.</p>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">💬</span>
+                <h3>Natural Conversations</h3>
+                <p>Ask questions in natural language and get intelligent responses based on your document content.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Try It Live</h2>
+            <p>Upload a PDF document and start asking questions! The AI will analyze the content and provide intelligent responses based on your document.</p>
+            
+            <div class="iframe-container">
+                <div class="loading">Loading RAG PDF Chat Application...</div>
+                <iframe 
+                    src="http://localhost:8501" 
+                    title="RAG PDF Chat Application"
+                    onload="this.previousElementSibling.style.display='none'"
+                    onerror="this.previousElementSibling.innerHTML='Error loading application. Please ensure the Docker container is running.'">
+                </iframe>
+            </div>
+            
+            <a href="/" class="back-link">← Back to Portfolio</a>
+        </div>
+
+        <div class="tech-stack">
+            <h2>Technology Stack</h2>
+            <div class="tech-items">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Streamlit</span>
+                <span class="tech-item">OpenAI GPT</span>
+                <span class="tech-item">ChromaDB</span>
+                <span class="tech-item">Sentence Transformers</span>
+                <span class="tech-item">PyMuPDF</span>
+                <span class="tech-item">Tesseract OCR</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Nginx</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add loading state management
+        const iframe = document.querySelector('iframe');
+        const loading = document.querySelector('.loading');
+        
+        iframe.addEventListener('load', function() {
+            loading.style.display = 'none';
+        });
+        
+        iframe.addEventListener('error', function() {
+            loading.innerHTML = 'Error loading application. Please ensure the Docker container is running.';
+        });
+        
+        // Auto-refresh iframe if connection is lost
+        setInterval(function() {
+            if (iframe.contentWindow && iframe.contentWindow.location.href === 'about:blank') {
+                loading.style.display = 'block';
+                loading.innerHTML = 'Reconnecting...';
+                iframe.src = iframe.src;
+            }
+        }, 30000); // Check every 30 seconds
+    </script>
+</body>
+</html>

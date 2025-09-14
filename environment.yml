@@ -1,0 +1,22 @@
+name: rag-project
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - streamlit==1.28.1
+    - PyPDF2==3.0.1
+    - pdfplumber==0.9.0
+    - pymupdf==1.23.8
+    - pillow==10.0.1
+    - openai==1.3.0
+    - numpy==1.24.3
+    - scikit-learn==1.3.0
+    - sentence-transformers==2.2.2
+    - chromadb==0.4.15
+    - python-dotenv==1.0.0
+    - pandas==2.0.3
+    - opencv-python==4.8.1.78
+    - pytesseract==0.3.10
