@@ -295,6 +295,68 @@ def main():
     
     # Sidebar for file management
     with st.sidebar:
+        st.markdown("### 🤖 Model Configuration")
+        
+        # Model selection
+        rag_system = st.session_state.rag_system
+        available_models = rag_system.get_available_models()
+        
+        # Filter models based on availability
+        model_options = []
+        for model_name, model_info in available_models.items():
+            if model_info["provider"] == "ollama":
+                # Check if Ollama is available
+                model_status = rag_system.get_model_status()
+                if model_status.get("ollama_available", False):
+                    model_options.append(model_name)
+            else:
+                model_options.append(model_name)
+        
+        if model_options:
+            selected_model = st.selectbox(
+                "Select AI Model",
+                options=model_options,
+                help="Choose the AI model for generating responses"
+            )
+            
+            # API Key input for OpenAI models
+            api_key = None
+            if selected_model.startswith("OpenAI"):
+                api_key = st.text_input(
+                    "OpenAI API Key",
+                    type="password",
+                    help="Enter your OpenAI API key",
+                    placeholder="sk-..."
+                )
+            
+            # Model status and test
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Set Model", type="primary"):
+                    with st.spinner("Setting up model..."):
+                        success = rag_system.set_model(selected_model, api_key)
+                        if success:
+                            st.success("Model set successfully!")
+                        else:
+                            st.error("Failed to set model. Check your configuration.")
+            
+            with col2:
+                if st.button("Test Model"):
+                    with st.spinner("Testing model..."):
+                        test_result = rag_system.test_model_connection()
+                        if test_result["success"]:
+                            st.success("✅ Model working!")
+                        else:
+                            st.error(f"❌ {test_result['message']}")
+            
+            # Show current model status
+            model_status = rag_system.get_model_status()
+            if model_status["current_model"]:
+                st.info(f"**Current Model:** {model_status['current_model']}")
+        else:
+            st.warning("No models available. Please check your configuration.")
+        
+        st.markdown("---")
         st.markdown("### 📁 Document Management")
         
         # File upload
@@ -371,10 +433,15 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
             
+            # Model status
+            model_status = rag_system.get_model_status()
+            model_icon = "✅" if model_status['current_model'] else "❌"
+            model_name = model_status['current_model'] or "Not Set"
+            
             st.markdown(f"""
             <div class="metric-card">
-                <h3>{'✅' if stats['openai_configured'] else '❌'}</h3>
-                <p>OpenAI Status</p>
+                <h3>{model_icon}</h3>
+                <p>Model: {model_name[:20]}{'...' if len(model_name) > 20 else ''}</p>
             </div>
             """, unsafe_allow_html=True)
         else:

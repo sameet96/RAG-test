@@ -18,7 +18,8 @@ A modern, professional RAG-based PDF Chat application with a stunning portfolio-
 - 💬 **Natural Conversations**: Ask questions in natural language
 - 📊 **Multi-Document Support**: Handle multiple PDFs simultaneously
 - 🔍 **Semantic Search**: Vector-based similarity search using embeddings
-- 🤖 **AI-Powered Answers**: Integration with OpenAI GPT models
+- 🤖 **Multiple AI Models**: Support for OpenAI GPT and Llama 3 models
+- 🔑 **Dynamic API Keys**: Secure API key input directly in the UI
 
 ## 🛠️ Technology Stack
 
@@ -32,7 +33,10 @@ A modern, professional RAG-based PDF Chat application with a stunning portfolio-
 - **OCR**: Tesseract, OpenCV for image text extraction
 - **Embeddings**: Sentence Transformers (all-MiniLM-L6-v2)
 - **Vector Database**: ChromaDB for similarity search
-- **AI**: OpenAI GPT-3.5-turbo for text generation
+- **AI Models**: 
+  - OpenAI GPT-3.5-turbo & GPT-4
+  - Llama 3 7B & 8B (via Ollama)
+- **Local LLM**: Ollama for running models locally
 - **Data Processing**: Pandas, NumPy for data manipulation
 
 ### **Deployment**
@@ -96,8 +100,9 @@ sudo apt-get install tesseract-ocr
 # Download from: https://github.com/UB-Mannheim/tesseract/wiki
 ```
 
-### **API Keys**
+### **API Keys & Models**
 - **OpenAI API Key**: Get from [OpenAI Platform](https://platform.openai.com/account/api-keys)
+- **Ollama Installation**: Run `./setup_ollama.sh` for local Llama 3 models
 
 ## 💻 Usage
 
@@ -109,16 +114,34 @@ sudo apt-get install tesseract-ocr
    streamlit run app.py
    ```
 
-2. **Upload & Process PDFs**:
+2. **Configure AI Model**:
+   - **For OpenAI**: Select OpenAI model and enter your API key in the sidebar
+   - **For Llama 3**: Run `./setup_ollama.sh` first, then select Llama 3 model
+   - Test your model connection using the "Test Model" button
+
+3. **Upload & Process PDFs**:
    - Use the sidebar file uploader to upload PDF documents
    - Click "Process Document" to parse and index content
    - Wait for processing to complete (progress shown in real-time)
 
-3. **Chat with Your Documents**:
+4. **Chat with Your Documents**:
    - Type questions in the chat interface
    - Get intelligent AI responses based on document content
    - View sources to see where information originated
    - Switch between multiple documents if uploaded
+
+### **AI Model Selection**
+Choose from multiple AI models based on your needs:
+
+#### **OpenAI Models** (Cloud-based)
+- **GPT-3.5-turbo**: Fast, cost-effective, good for most tasks
+- **GPT-4**: Most capable, best for complex reasoning
+- **Setup**: Enter your OpenAI API key in the sidebar
+
+#### **Llama 3 Models** (Local)
+- **Llama 3 7B**: Fast local inference, good balance of speed/quality
+- **Llama 3 8B**: Better quality, slightly slower
+- **Setup**: Run `./setup_ollama.sh` to install Ollama and models
 
 ### **Sample Questions**
 - "What is the main topic of this document?"

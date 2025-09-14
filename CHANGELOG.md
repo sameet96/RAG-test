@@ -2,6 +2,35 @@
 
 All notable changes to the RAG PDF Chat application are documented in this file.
 
+## [2.1.0] - 2024-12-19 - Multi-Model Support
+
+### 🤖 **Multiple AI Model Support**
+- **NEW**: Llama 3 7B & 8B model support via Ollama
+- **NEW**: Dynamic model selection in the UI
+- **NEW**: Secure OpenAI API key input directly in the interface
+- **NEW**: Model connection testing and status monitoring
+- **NEW**: Local LLM support for privacy-conscious users
+
+### 🔧 **Technical Enhancements**
+- **NEW**: `ModelManager` class for handling multiple LLM providers
+- **NEW**: Ollama integration for local model inference
+- **NEW**: Dynamic API key management
+- **NEW**: Model availability detection and filtering
+- **NEW**: Comprehensive model testing and validation
+
+### 📱 **UI Improvements**
+- **NEW**: Model configuration section in sidebar
+- **NEW**: API key input with password masking
+- **NEW**: Model status indicators and testing buttons
+- **NEW**: Real-time model availability checking
+- **NEW**: Enhanced system statistics with model information
+
+### 🛠️ **Setup & Installation**
+- **NEW**: `setup_ollama.sh` script for easy Ollama installation
+- **NEW**: Automatic model pulling and setup
+- **NEW**: Cross-platform Ollama installation support
+- **NEW**: Model dependency management
+
 ## [2.0.0] - 2024-12-19 - Portfolio UI Transformation
 
 ### 🎨 **Major UI Overhaul**

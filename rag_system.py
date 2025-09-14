@@ -3,19 +3,23 @@ from typing import List, Dict, Any
 import logging
 from config import OPENAI_API_KEY, CHUNK_SIZE, CHUNK_OVERLAP
 from embedding_system import EmbeddingSystem
+from model_manager import ModelManager
 
 logger = logging.getLogger(__name__)
 
 class RAGSystem:
     def __init__(self):
         self.embedding_system = EmbeddingSystem()
+        self.model_manager = ModelManager()
         
-        # Initialize OpenAI
+        # Initialize with default OpenAI if available
         if OPENAI_API_KEY:
             openai.api_key = OPENAI_API_KEY
             self.openai_client = openai.OpenAI(api_key=OPENAI_API_KEY)
+            # Set default model to OpenAI GPT-3.5-turbo
+            self.model_manager.set_model("OpenAI GPT-3.5-turbo", OPENAI_API_KEY)
         else:
-            logger.warning("OpenAI API key not found. Text generation will not work.")
+            logger.warning("OpenAI API key not found. Please configure a model in the UI.")
             self.openai_client = None
     
     def process_document(self, file_id: str, file_path: str) -> bool:
@@ -112,11 +116,8 @@ class RAGSystem:
             # Combine context
             context = "\n\n".join(context_parts)
             
-            # Generate answer using OpenAI
-            if self.openai_client:
-                answer = self._generate_answer_with_openai(query, context)
-            else:
-                answer = "OpenAI API key not configured. Cannot generate answer."
+            # Generate answer using the selected model
+            answer = self.model_manager.generate_response(query, context)
             
             return {
                 "answer": answer,
@@ -176,6 +177,22 @@ Answer:"""
         except Exception as e:
             logger.error(f"Error generating answer with OpenAI: {str(e)}")
             return f"Error generating answer: {str(e)}"
+    
+    def get_available_models(self) -> Dict[str, Any]:
+        """Get available models and their status"""
+        return self.model_manager.get_available_models()
+    
+    def set_model(self, model_name: str, api_key: str = None) -> bool:
+        """Set the current model"""
+        return self.model_manager.set_model(model_name, api_key)
+    
+    def get_model_status(self) -> Dict[str, Any]:
+        """Get current model status"""
+        return self.model_manager.get_model_status()
+    
+    def test_model_connection(self) -> Dict[str, Any]:
+        """Test connection to current model"""
+        return self.model_manager.test_model_connection()
     
     def get_document_summary(self, file_id: str) -> Dict[str, Any]:
         """
