@@ -6,10 +6,10 @@ This script demonstrates the model selection and functionality
 
 import sys
 import os
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('..'))
 
-from model_manager import ModelManager
-from rag_system import RAGSystem
+from src.core.model_manager import ModelManager
+from src.core.rag_system import RAGSystem
 
 def test_model_manager():
     """Test the ModelManager functionality"""

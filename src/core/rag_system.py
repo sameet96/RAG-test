@@ -1,9 +1,9 @@
 import openai
 from typing import List, Dict, Any
 import logging
-from config import OPENAI_API_KEY, CHUNK_SIZE, CHUNK_OVERLAP
-from embedding_system import EmbeddingSystem
-from model_manager import ModelManager
+from ..config.config import OPENAI_API_KEY, CHUNK_SIZE, CHUNK_OVERLAP
+from .embedding_system import EmbeddingSystem
+from .model_manager import ModelManager
 
 logger = logging.getLogger(__name__)
 

@@ -7,8 +7,8 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # File Storage Configuration
-UPLOAD_FOLDER = "uploads"
-EMBEDDINGS_FOLDER = "embeddings"
+UPLOAD_FOLDER = "data/uploads"
+EMBEDDINGS_FOLDER = "data/embeddings"
 
 # Model Configuration
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"

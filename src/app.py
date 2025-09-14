@@ -5,9 +5,9 @@ from typing import Dict, Any
 import logging
 
 # Import our custom modules
-from pdf_uploader import PDFUploader
-from rag_system import RAGSystem
-from config import UPLOAD_FOLDER
+from .utils.pdf_uploader import PDFUploader
+from .core.rag_system import RAGSystem
+from .config.config import UPLOAD_FOLDER
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

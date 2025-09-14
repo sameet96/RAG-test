@@ -6,7 +6,7 @@ import json
 import os
 from typing import List, Dict, Any
 import logging
-from config import EMBEDDING_MODEL, COLLECTION_NAME, EMBEDDINGS_FOLDER
+from ..config.config import EMBEDDING_MODEL, COLLECTION_NAME, EMBEDDINGS_FOLDER
 
 logger = logging.getLogger(__name__)
 
